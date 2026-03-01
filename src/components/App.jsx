@@ -39,9 +39,6 @@ import {
     CheckCircle2
 } from 'lucide-react';
 
-/**
- * DATA CONSTANTS
- */
 const CATEGORIES = [
     {
         id: 'apparel', title: 'Apparel', icon: Shirt, desc: 'Custom T-Shirts, Hoodies & Polos', color: 'blue',
@@ -107,16 +104,9 @@ const TESTIMONIALS = [
     { name: "Ahmed R.", role: "Artist", text: "The large format canvas prints are stunning. They managed to capture the fine details of my digital paintings perfectly.", init: "AR" }
 ];
 
-/**
- * CUSTOM COMPONENTS
- */
-
-// Custom Whatsapp Icon designed to perfectly match Lucide outline icons
 const WhatsappIcon = ({ className }) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-        {/* Outer Chat Bubble */}
         <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
-        {/* Inner Phone Receiver (scaled down and centered) */}
         <g transform="translate(6, 6) scale(0.5)">
             <path strokeWidth="4" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
         </g>
@@ -186,10 +176,8 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollPos, navigateTo, setActiveCat
             className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-xl shadow-md' : 'bg-white/90 backdrop-blur-sm shadow-sm'
                 }`}
         >
-            {/* Top Row: Logo, Search, Action */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
+            <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 py-3 flex items-center justify-between gap-4">
 
-                {/* Logo */}
                 <a href="#home" onClick={(e) => { e.preventDefault(); navigateTo('home', 'home'); }} className="flex items-center gap-2 sm:gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-lg shrink-0 active:scale-95 transition-transform duration-200">
                     <PrintosLogo className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 transform md:group-hover:scale-105 transition-all duration-300" color="#2d9ed8" />
                     <span className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-gray-900 md:group-hover:text-blue-600 transition-colors">
@@ -197,7 +185,6 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollPos, navigateTo, setActiveCat
                     </span>
                 </a>
 
-                {/* Search Bar (Desktop) */}
                 <div className="hidden lg:flex flex-1 max-w-2xl mx-8 relative">
                     <form
                         onSubmit={(e) => { e.preventDefault(); executeSearch(query); }}
@@ -216,7 +203,6 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollPos, navigateTo, setActiveCat
                             <Search className="w-5 h-5" />
                         </button>
 
-                        {/* Desktop Suggestions Dropdown */}
                         {showDesktopSuggestions && suggestions.length > 0 && (
                             <div className="absolute top-full left-0 right-0 mt-2 bg-white shadow-2xl rounded-2xl border border-gray-100 overflow-hidden z-[60] animate-fade-in">
                                 {suggestions.map(item => {
@@ -244,7 +230,6 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollPos, navigateTo, setActiveCat
                     </form>
                 </div>
 
-                {/* Action Buttons */}
                 <div className="flex items-center gap-2 sm:gap-4 shrink-0">
                     <a href="#about" onClick={(e) => { e.preventDefault(); navigateTo('home', 'about'); }} className="hidden md:inline-flex px-4 py-2.5 text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded-full active:scale-95">
                         About Us
@@ -255,16 +240,14 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollPos, navigateTo, setActiveCat
                     <button
                         className="lg:hidden p-2 text-gray-800 hover:bg-gray-200 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 active:scale-90"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        aria-label="Toggle Menu"
                     >
                         {isMenuOpen ? <X className="w-6 h-6 sm:w-7 sm:h-7" /> : <Menu className="w-6 h-6 sm:w-7 sm:h-7" />}
                     </button>
                 </div>
             </div>
 
-            {/* Bottom Row: Category Strip (Desktop) */}
             <div className="hidden lg:block border-t border-gray-100">
-                <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center space-x-8 w-full relative">
+                <nav className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 flex justify-center space-x-8 w-full relative">
                     {CATEGORIES.map(cat => (
                         <div key={cat.id} className="relative group">
                             <button
@@ -274,7 +257,6 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollPos, navigateTo, setActiveCat
                                 {cat.title} <ChevronDown className="w-4 h-4 opacity-50 group-hover:rotate-180 transition-transform duration-300" />
                             </button>
 
-                            {/* Dropdown Menu */}
                             <div className="absolute top-full left-1/2 -translate-x-1/2 w-56 bg-white shadow-xl rounded-2xl border border-gray-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
                                 <div className="flex flex-col">
                                     {cat.subItems.map(item => (
@@ -294,11 +276,9 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollPos, navigateTo, setActiveCat
                 </nav>
             </div>
 
-            {/* Mobile Menu Drawer */}
             <div className={`fixed top-[60px] sm:top-[70px] left-0 w-full h-[calc(100vh-60px)] bg-white/95 backdrop-blur-xl border-t border-gray-200 shadow-2xl transition-all duration-300 lg:hidden overflow-y-auto ${isMenuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-4'}`}>
                 <div className="flex flex-col px-6 py-6 gap-4 pb-24">
 
-                    {/* Mobile Search */}
                     <div className="relative mb-2">
                         <form onSubmit={(e) => { e.preventDefault(); executeSearch(query); }} className="relative">
                             <input
@@ -314,7 +294,6 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen, scrollPos, navigateTo, setActiveCat
                             </button>
                         </form>
 
-                        {/* Mobile Suggestions Dropdown */}
                         {showMobileSuggestions && suggestions.length > 0 && (
                             <div className="mt-2 bg-white shadow-lg rounded-xl border border-gray-100 overflow-hidden animate-fade-in-up">
                                 {suggestions.map(item => (
@@ -371,7 +350,6 @@ const Footer = ({ navigateTo }) => {
     return (
         <footer className="bg-black text-gray-400 pt-8 pb-16 border-t border-gray-800 relative overflow-hidden">
 
-            {/* Marquee Banner */}
             <div className="w-full overflow-hidden bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white py-4 mb-12 lg:mb-16 transform -skew-y-2 shadow-2xl z-20 border-y-4 border-gray-900">
                 <div className="animate-marquee whitespace-nowrap font-extrabold text-lg sm:text-xl md:text-2xl tracking-[0.2em] uppercase flex gap-4 sm:gap-8">
                     <span>PREMIUM QUALITY • FAST TURNAROUND • CUSTOM DESIGNS • 100% SATISFACTION • PRINTING REIMAGINED •</span>
@@ -379,7 +357,7 @@ const Footer = ({ navigateTo }) => {
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-10 lg:gap-12 relative z-10">
+            <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-10 lg:gap-12 relative z-10">
                 <div className="sm:col-span-2 md:col-span-5">
                     <div className="flex items-center space-x-3 mb-6">
                         <PrintosLogo className="w-8 h-8 lg:w-10 lg:h-10" color="#ffffff" />
@@ -424,10 +402,19 @@ const Footer = ({ navigateTo }) => {
                     </ul>
                 </div>
 
-
+                <div className="sm:col-span-2 md:col-span-4">
+                    <h3 className="text-white font-bold mb-6 text-sm tracking-widest uppercase">Newsletter</h3>
+                    <p className="text-sm font-light mb-4">Subscribe to get special offers and industry print news.</p>
+                    <form className="flex w-full" onSubmit={(e) => e.preventDefault()}>
+                        <input type="email" placeholder="Email address" required className="bg-gray-900 border border-gray-800 text-white text-sm rounded-l-xl focus:ring-2 focus:ring-blue-500 focus:outline-none block w-full p-3 transition-all min-w-0" />
+                        <button type="submit" className="bg-blue-600 text-white px-5 rounded-r-xl hover:bg-blue-500 active:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 active:scale-95 origin-left flex items-center justify-center">
+                            <Send className="w-4 h-4 md:hover:translate-x-1 md:hover:-translate-y-1 transition-transform" />
+                        </button>
+                    </form>
+                </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 lg:mt-16 pt-8 border-t border-gray-800 text-xs flex flex-col md:flex-row justify-between items-center text-center md:text-left font-light tracking-wide gap-4">
+            <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 mt-12 lg:mt-16 pt-8 border-t border-gray-800 text-xs flex flex-col md:flex-row justify-between items-center text-center md:text-left font-light tracking-wide gap-4">
                 <p>&copy; 2026 Printos. All rights reserved.</p>
                 <div className="flex space-x-6">
                     <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
@@ -477,11 +464,10 @@ const HeroSlider = () => {
 const Hero = ({ navigateTo }) => {
     return (
         <section id="home" className="relative pb-16 lg:pb-32 overflow-hidden bg-white">
-            {/* Decorative Blobs */}
             <div className="absolute top-0 right-0 -translate-y-12 translate-x-1/3 w-[500px] md:w-[800px] h-[500px] md:h-[800px] bg-blue-50 rounded-full blur-3xl opacity-60 z-0 pointer-events-none" />
             <div className="absolute bottom-0 left-0 translate-y-1/3 -translate-x-1/3 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-purple-50 rounded-full blur-3xl opacity-60 z-0 pointer-events-none" />
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 lg:pt-12">
+            <div className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 pt-6 lg:pt-12">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-8 items-center">
 
                     <div className="max-w-2xl text-center lg:text-left mx-auto lg:mx-0">
@@ -514,7 +500,6 @@ const Hero = ({ navigateTo }) => {
 
                     <div className="relative transform md:hover:scale-[1.02] transition-transform duration-500 w-full mt-4 lg:mt-0">
                         <HeroSlider />
-                        {/* Abstract Accents */}
                         <div className="absolute -bottom-6 sm:-bottom-10 -left-6 sm:-left-10 w-24 sm:w-40 h-24 sm:h-40 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mix-blend-multiply filter blur-2xl sm:blur-3xl opacity-60 animate-pulse pointer-events-none" />
                         <div className="absolute -top-6 sm:-top-10 -right-6 sm:-right-10 w-24 sm:w-40 h-24 sm:h-40 bg-gradient-to-r from-pink-400 to-orange-400 rounded-full mix-blend-multiply filter blur-2xl sm:blur-3xl opacity-60 animate-pulse pointer-events-none" style={{ animationDelay: '1s' }} />
                     </div>
@@ -531,7 +516,7 @@ const HomeServices = ({ navigateTo, setActiveCategory }) => {
             <div className="absolute top-0 left-[-10%] w-64 md:w-96 h-64 md:h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-[80px] opacity-30 animate-spin-slow pointer-events-none" />
             <div className="absolute bottom-0 right-[-10%] w-64 md:w-96 h-64 md:h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-[80px] opacity-30 animate-spin-slow pointer-events-none" style={{ animationDirection: 'reverse' }} />
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
                 <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-20">
                     <span className="text-xs sm:text-sm font-bold tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 uppercase block mb-2 sm:mb-3">Our Capabilities</span>
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl leading-tight font-extrabold text-gray-900">
@@ -571,18 +556,20 @@ const HomeServices = ({ navigateTo, setActiveCategory }) => {
 const About = ({ navigateTo }) => {
     return (
         <section id="about" className="py-16 lg:py-24 bg-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
                 <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
 
-                    <div className="relative h-[300px] sm:h-[450px] lg:h-[650px] mb-12 lg:mb-0 rounded-[2rem] lg:rounded-[40px] overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-purple-600 transform md:rotate-3 scale-105 opacity-20" />
-                        <img
-                            src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&q=80&w=1000"
-                            alt="Vibrant printed color palettes"
-                            className="absolute inset-0 w-full h-full object-cover shadow-2xl transform md:-rotate-2 hover:rotate-0 transition-transform duration-700"
-                        />
+                    <div className="relative h-[300px] sm:h-[450px] lg:h-[650px] mb-12 lg:mb-0">
+                        <div className="absolute inset-0 z-0">
+                            <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-purple-600 transform md:rotate-3 scale-105 opacity-20 rounded-[2rem] lg:rounded-[40px]" />
+                            <img
+                                src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&q=80&w=1000"
+                                alt="Vibrant printed color palettes"
+                                className="absolute inset-0 w-full h-full object-cover shadow-2xl transform md:-rotate-2 hover:rotate-0 transition-transform duration-700 rounded-[2rem] lg:rounded-[40px]"
+                            />
+                        </div>
 
-                        <div className="absolute bottom-4 right-4 lg:-bottom-8 lg:-right-8 bg-white/95 backdrop-blur-md p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-2xl flex items-center space-x-3 sm:space-x-4 border border-gray-100">
+                        <div className="absolute -bottom-6 -right-2 sm:-bottom-8 sm:-right-8 bg-white/95 backdrop-blur-md p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-2xl flex items-center space-x-3 sm:space-x-4 border border-gray-100 z-10">
                             <div className="w-10 h-10 sm:w-14 sm:h-14 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-base sm:text-xl">10+</div>
                             <div>
                                 <p className="font-bold text-gray-900 text-base sm:text-lg leading-tight">Years</p>
@@ -639,7 +626,7 @@ const Contact = () => {
         category: CATEGORIES[0].title,
         message: ''
     });
-    const [status, setStatus] = useState('idle'); // 'idle' | 'loading' | 'success' | 'error'
+    const [status, setStatus] = useState('idle');
     const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (e) => {
@@ -651,7 +638,6 @@ const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Strict Email Validation Regex
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if (!emailRegex.test(formData.email)) {
             setErrorMessage('Please enter a valid email address formatting (e.g., name@example.com).');
@@ -661,7 +647,6 @@ const Contact = () => {
         setStatus('loading');
 
         try {
-            // Send to FormSubmit
             const response = await fetch('https://formsubmit.co/ajax/abhiramkrishna15@gmail.com', {
                 method: 'POST',
                 headers: {
@@ -674,14 +659,14 @@ const Contact = () => {
                     Email: formData.email,
                     Category: formData.category,
                     Details: formData.message,
-                    _captcha: "false" // Disables recaptcha for seamless AJAX
+                    _captcha: "false"
                 })
             });
 
             if (response.ok) {
                 setStatus('success');
                 setFormData({ name: '', email: '', category: CATEGORIES[0].title, message: '' });
-                setTimeout(() => setStatus('idle'), 5000); // Reset after 5 seconds
+                setTimeout(() => setStatus('idle'), 5000);
             } else {
                 throw new Error('Failed to send message');
             }
@@ -696,7 +681,7 @@ const Contact = () => {
             <div className="absolute top-0 right-0 w-64 md:w-96 h-64 md:h-96 bg-purple-600 rounded-full mix-blend-screen filter blur-[80px] md:blur-[120px] opacity-30 pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-64 md:w-96 h-64 md:h-96 bg-blue-600 rounded-full mix-blend-screen filter blur-[80px] md:blur-[120px] opacity-30 pointer-events-none" />
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
                 <div className="text-center mb-10 md:mb-16">
                     <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-3 md:mb-4">Reach out to Us</h2>
                     <p className="text-base sm:text-lg lg:text-xl text-gray-400 font-light">Get a custom quote or drop by our office.</p>
@@ -828,7 +813,7 @@ const ProductCatalog = ({ activeCategory, setActiveCategory, activeSubCategory, 
     });
 
     return (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 pb-12 flex flex-col md:flex-row gap-6 md:gap-10">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 pt-4 sm:pt-6 pb-12 flex flex-col md:flex-row gap-6 md:gap-10">
 
             {/* Mobile Filter Toggle */}
             <button
@@ -866,7 +851,7 @@ const ProductCatalog = ({ activeCategory, setActiveCategory, activeSubCategory, 
                             </div>
                         </button>
 
-                        <div className={`ml-4 sm:ml-6 mt-1 border-l-[1.5px] border-gray-200 pl-3 sm:pl-4 py-2 space-y-1 transition-all block`}>
+                        <div className={`ml-3 sm:ml-4 mt-1 border-l-[1.5px] border-gray-200 pl-3 sm:pl-4 py-2 space-y-1 transition-all block`}>
                             {CATEGORIES.map(cat => {
                                 const isExpanded = expandedCategories.includes(cat.id);
                                 return (
@@ -888,7 +873,7 @@ const ProductCatalog = ({ activeCategory, setActiveCategory, activeSubCategory, 
                                         </button>
 
                                         {isExpanded && cat.subItems.length > 0 && (
-                                            <div className="pl-5 sm:pl-6 pb-2 space-y-1 mt-1 animate-fade-in">
+                                            <div className="pl-4 sm:pl-5 pb-2 space-y-1 mt-1 animate-fade-in">
                                                 {cat.subItems.map(sub => (
                                                     <button
                                                         key={sub}
@@ -975,49 +960,53 @@ const ProductCatalog = ({ activeCategory, setActiveCategory, activeSubCategory, 
                 )}
 
                 {/* Animated Wrapper for grid items */}
-                <div key={`${activeCategory}-${activeSubCategory}-${searchTerm}`} className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 animate-fade-in-up">
+                <div key={`${activeCategory}-${activeSubCategory}-${searchTerm}`} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 animate-fade-in-up">
                     {filteredProducts.map(product => (
                         <button
                             key={product.id}
                             onClick={() => navigateTo('product', null, product)}
-                            className="text-left bg-white rounded-[1rem] sm:rounded-[24px] p-2.5 sm:p-4 flex flex-col group transition-all duration-300 md:hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-gray-100 cursor-pointer active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="text-left bg-white rounded-3xl p-5 sm:p-6 flex flex-col h-full group transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-gray-100 cursor-pointer active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
 
                             {/* Product Image Panel */}
-                            <div className="bg-[#f4f5f7] rounded-[12px] sm:rounded-[20px] aspect-[4/3] mb-3 sm:mb-5 relative overflow-hidden flex items-center justify-center p-3 sm:p-6 w-full">
+                            <div className="bg-[#f4f5f7] rounded-2xl aspect-[4/3] mb-5 sm:mb-6 relative overflow-hidden flex items-center justify-center p-6 sm:p-8 w-full shrink-0">
                                 {/* Badge */}
-                                <span className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-white px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[9px] sm:text-[11px] font-bold text-gray-600 border border-gray-200 shadow-sm z-10 tracking-wide">
+                                <span className="absolute top-4 right-4 bg-white px-3 sm:px-4 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold text-gray-700 border border-gray-200 shadow-sm z-10 tracking-wide">
                                     {product.badge}
                                 </span>
 
                                 <img
                                     src={product.image}
                                     alt={product.name}
-                                    className="w-full h-full object-contain mix-blend-multiply md:group-hover:scale-105 transition-transform duration-500"
+                                    className="w-full h-full object-contain mix-blend-multiply transition-transform duration-500"
                                 />
                             </div>
 
                             {/* Product Details */}
-                            <div className="px-1 flex-1 flex flex-col w-full">
-                                <h3 className="font-bold text-gray-900 text-sm sm:text-lg leading-tight mb-1.5 sm:mb-2 line-clamp-2 sm:line-clamp-1 md:group-hover:text-blue-600 transition-colors">{product.name}</h3>
+                            <div className="flex-1 flex flex-col w-full">
+                                <h3 className="font-bold font-poppins text-gray-900 text-lg sm:text-xl leading-tight mb-3 line-clamp-1 group-hover:text-blue-600 transition-colors">
+                                    {product.name}
+                                </h3>
 
-                                <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 sm:mb-5 mt-auto gap-1 sm:gap-0">
-                                    <div className="flex items-center space-x-1 sm:space-x-1.5">
-                                        <Star className="w-3 h-3 sm:w-4 sm:h-4 fill-orange-400 text-orange-400" />
-                                        <span className="text-[10px] sm:text-xs font-bold text-gray-600">
-                                            {product.rating} <span className="font-medium text-gray-400 hidden sm:inline">({product.reviews})</span>
-                                        </span>
+                                <div className="mt-auto flex flex-col gap-5">
+                                    <div className="flex flex-row items-center justify-between">
+                                        <div className="flex items-center space-x-1.5">
+                                            <Star className="w-5 h-5 fill-orange-400 text-orange-400" />
+                                            <span className="text-sm font-bold text-gray-600">
+                                                {product.rating} <span className="font-medium text-gray-400">({product.reviews})</span>
+                                            </span>
+                                        </div>
+                                        <span className="font-black text-2xl text-gray-900">₹{product.price}</span>
                                     </div>
-                                    <span className="font-extrabold text-base sm:text-xl text-gray-900">₹{product.price}</span>
-                                </div>
 
-                                {/* Actions */}
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 w-full mt-auto">
-                                    <div className="hidden sm:flex items-center justify-center border-2 border-gray-200 text-gray-700 font-bold text-[11px] sm:text-[13px] py-1.5 sm:py-2.5 rounded-full hover:border-gray-900 transition-colors">
-                                        Add to Cart
-                                    </div>
-                                    <div className="flex items-center justify-center bg-[#1c1c1e] text-white font-bold text-[11px] sm:text-[13px] py-1.5 sm:py-2.5 rounded-full hover:bg-black transition-colors w-full">
-                                        Buy Now
+                                    {/* Actions */}
+                                    <div className="grid grid-cols-2 gap-3 w-full">
+                                        <div className="flex items-center justify-center border-2 border-gray-200 text-gray-800 font-bold text-[13px] sm:text-sm py-2.5 rounded-full group-hover:border-gray-800 hover:bg-gray-50 transition-colors w-full px-1 text-center">
+                                            Add to Cart
+                                        </div>
+                                        <div className="flex items-center justify-center bg-[#1c1c1e] text-white font-bold text-[13px] sm:text-sm py-2.5 rounded-full hover:bg-black transition-colors w-full px-1 text-center">
+                                            Buy Now
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1046,10 +1035,10 @@ const ProductDetails = ({ product, navigateTo, setActiveCategory, setActiveSubCa
     if (!product) return null;
 
     const categoryData = CATEGORIES.find(c => c.id === product.category);
-    const relatedProducts = MOCK_PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+    const relatedProducts = MOCK_PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 3); // Changed to slice(0,3) to fit 3 per row on desktop
 
     return (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 sm:pt-6 pb-12 animate-fade-in-up">
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 pt-4 sm:pt-6 pb-12 animate-fade-in-up">
 
             {/* Breadcrumbs */}
             <nav className="flex items-center space-x-1 sm:space-x-2 text-xs sm:text-sm text-gray-500 mb-6 sm:mb-8 font-medium flex-wrap">
@@ -1249,26 +1238,46 @@ const ProductDetails = ({ product, navigateTo, setActiveCategory, setActiveSubCa
                         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 mt-3 sm:mt-4">Explore <span className="text-green-700">Related Products</span></h2>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                         {relatedProducts.map(relProduct => (
                             <button
                                 key={relProduct.id}
                                 onClick={() => navigateTo('product', null, relProduct)}
-                                className="text-left bg-white rounded-2xl sm:rounded-[24px] p-2.5 sm:p-4 flex flex-col group transition-all duration-300 md:hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-gray-100 active:scale-[0.98]"
+                                className="text-left bg-white rounded-3xl p-5 sm:p-6 flex flex-col h-full group transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-gray-100 cursor-pointer active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-blue-500"
                             >
-                                <div className="bg-[#f4f5f7] rounded-xl sm:rounded-[20px] aspect-[4/3] mb-3 sm:mb-5 relative overflow-hidden flex items-center justify-center p-3 sm:p-4 w-full">
-                                    <span className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-green-700 text-white px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md text-[8px] sm:text-[10px] font-bold z-10">10% off</span>
-                                    <img src={relProduct.image} alt={relProduct.name} className="w-full h-full object-contain mix-blend-multiply md:group-hover:scale-105 transition-transform duration-500" />
+                                <div className="bg-[#f4f5f7] rounded-2xl aspect-[4/3] mb-5 sm:mb-6 relative overflow-hidden flex items-center justify-center p-6 sm:p-8 w-full shrink-0">
+                                    <span className="absolute top-4 left-4 bg-green-700 text-white px-3 py-1.5 rounded-full text-xs font-bold z-10 tracking-wide">10% off</span>
+                                    <img src={relProduct.image} alt={relProduct.name} className="w-full h-full object-contain mix-blend-multiply transition-transform duration-500" />
                                 </div>
-                                <div className="px-0.5 sm:px-1 flex flex-col h-full w-full">
-                                    <div className="flex justify-between items-start mb-1.5 sm:mb-2">
-                                        <p className="text-[10px] sm:text-xs font-bold text-gray-400 uppercase truncate pr-1">{relProduct.badge}</p>
-                                        <div className="flex items-center text-[10px] sm:text-xs font-bold text-gray-900 shrink-0"><Star className="w-3 h-3 fill-yellow-400 text-yellow-400 mr-1" /> {relProduct.rating}</div>
+                                <div className="flex-1 flex flex-col w-full">
+                                    <div className="flex justify-between items-start mb-2">
+                                        <p className="text-xs font-bold text-gray-400 uppercase truncate pr-2">{relProduct.badge}</p>
                                     </div>
-                                    <h3 className="font-bold text-gray-900 text-sm sm:text-base leading-tight mb-2 line-clamp-2 sm:line-clamp-1 md:group-hover:text-blue-600 transition-colors">{relProduct.name}</h3>
-                                    <div className="flex items-center gap-1.5 sm:gap-2 mt-auto">
-                                        <span className="font-extrabold text-base sm:text-lg text-gray-900">₹{relProduct.price}</span>
-                                        {relProduct.oldPrice && <span className="text-[10px] sm:text-sm text-gray-400 line-through">₹{relProduct.oldPrice}</span>}
+                                    <h3 className="font-bold font-poppins text-gray-900 text-lg sm:text-xl leading-tight mb-3 line-clamp-1 group-hover:text-blue-600 transition-colors">
+                                        {relProduct.name}
+                                    </h3>
+                                    <div className="mt-auto flex flex-col gap-5">
+                                        <div className="flex flex-row items-center justify-between">
+                                            <div className="flex items-center space-x-1.5">
+                                                <Star className="w-5 h-5 fill-orange-400 text-orange-400" />
+                                                <span className="text-sm font-bold text-gray-600">
+                                                    {relProduct.rating} <span className="font-medium text-gray-400">({relProduct.reviews})</span>
+                                                </span>
+                                            </div>
+                                            <div className="flex items-center gap-2">
+                                                {relProduct.oldPrice && <span className="text-sm text-gray-400 line-through">₹{relProduct.oldPrice}</span>}
+                                                <span className="font-black text-2xl text-gray-900">₹{relProduct.price}</span>
+                                            </div>
+                                        </div>
+
+                                        <div className="grid grid-cols-2 gap-3 w-full">
+                                            <div className="flex items-center justify-center border-2 border-gray-200 text-gray-800 font-bold text-[13px] sm:text-sm py-2.5 rounded-full group-hover:border-gray-800 hover:bg-gray-50 transition-colors px-1 text-center">
+                                                Add to Cart
+                                            </div>
+                                            <div className="flex items-center justify-center bg-[#1c1c1e] text-white font-bold text-[13px] sm:text-sm py-2.5 rounded-full hover:bg-black transition-colors w-full px-1 text-center">
+                                                Buy Now
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </button>
@@ -1312,30 +1321,23 @@ const ProductDetails = ({ product, navigateTo, setActiveCategory, setActiveSubCa
     );
 }
 
-/**
- * MAIN APP COMPONENT
- */
 export default function App() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrollPos, setScrollPos] = useState(0);
 
-    // App routing and category state
-    const [currentPage, setCurrentPage] = useState('home'); // 'home' | 'catalog' | 'product'
+    const [currentPage, setCurrentPage] = useState('home');
     const [selectedProduct, setSelectedProduct] = useState(null);
 
     const [activeCategory, setActiveCategory] = useState('All');
     const [activeSubCategory, setActiveSubCategory] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
 
-    // Smooth page transition state
     const [isTransitioning, setIsTransitioning] = useState(false);
 
-    // Global Scroll Tracker & Head Setup
     useEffect(() => {
         const handleScroll = () => setScrollPos(window.scrollY);
         window.addEventListener('scroll', handleScroll, { passive: true });
 
-        // Inject Custom SVG Favicon and Title
         document.title = "Printos | Custom Printing Services";
         let link = document.querySelector("link[rel~='icon']");
         if (!link) {
@@ -1351,30 +1353,25 @@ export default function App() {
     const navigateTo = (page, sectionId = null, product = null) => {
         setIsMenuOpen(false);
 
-        // If routing to a different page, trigger the fade-out/fade-in animation
         if (currentPage !== page || product) {
             setIsTransitioning(true);
 
-            // Wait for fade-out to finish (300ms) before swapping content and scrolling up
             setTimeout(() => {
                 setCurrentPage(page);
                 if (product) setSelectedProduct(product);
 
                 if (sectionId) {
-                    // Extra slight delay to ensure DOM element exists before scrolling to it
                     setTimeout(() => {
                         document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
                     }, 50);
                 } else {
-                    window.scrollTo(0, 0); // instant jump to top while still invisible
+                    window.scrollTo(0, 0);
                 }
 
-                // Remove fade out overlay
                 setIsTransitioning(false);
             }, 300);
 
         } else {
-            // If already on the page, just scroll smoothly
             if (sectionId) {
                 document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
             } else {
@@ -1396,10 +1393,6 @@ export default function App() {
                 setSearchTerm={setSearchTerm}
             />
 
-            {/* This wrapper uses Tailwind's transition-opacity to fade out 
-        when isTransitioning is true, and fade in when false. 
-        Top padding adjusted to exactly match the fixed header. 
-      */}
             <main className={`pt-[60px] sm:pt-[70px] lg:pt-[116px] bg-white flex-1 transition-opacity duration-300 ease-in-out ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}>
                 {currentPage === 'home' && (
                     <>
@@ -1407,9 +1400,8 @@ export default function App() {
                         <HomeServices navigateTo={navigateTo} setActiveCategory={setActiveCategory} />
                         <About navigateTo={navigateTo} />
 
-                        {/* Testimonial Section */}
                         <section className="py-16 lg:py-24 bg-blue-50/50">
-                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
                                 <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-10 lg:mb-16 text-gray-900">What our clients say</h2>
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                                     {TESTIMONIALS.map((t, i) => (
@@ -1460,7 +1452,6 @@ export default function App() {
             <Contact />
             <Footer navigateTo={navigateTo} />
 
-            {/* Tailwind Config Extension & Animations */}
             <style dangerouslySetInnerHTML={{
                 __html: `
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
@@ -1491,7 +1482,6 @@ export default function App() {
           animation: bounceSlow 3s infinite;
         }
         
-        /* Smooth Fade and Slide Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -1509,7 +1499,6 @@ export default function App() {
             animation: fadeInUp 0.5s ease-out forwards;
         }
 
-        /* Hide scrollbar for clean horizontal scrolls on mobile */
         .no-scrollbar::-webkit-scrollbar {
           display: none;
         }
@@ -1518,7 +1507,6 @@ export default function App() {
           scrollbar-width: none;
         }
 
-        /* Custom main scrollbar */
         ::-webkit-scrollbar {
           width: 8px;
         }

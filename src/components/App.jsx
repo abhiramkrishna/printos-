@@ -402,16 +402,6 @@ const Footer = ({ navigateTo }) => {
                     </ul>
                 </div>
 
-                <div className="sm:col-span-2 md:col-span-4">
-                    <h3 className="text-white font-bold mb-6 text-sm tracking-widest uppercase">Newsletter</h3>
-                    <p className="text-sm font-light mb-4">Subscribe to get special offers and industry print news.</p>
-                    <form className="flex w-full" onSubmit={(e) => e.preventDefault()}>
-                        <input type="email" placeholder="Email address" required className="bg-gray-900 border border-gray-800 text-white text-sm rounded-l-xl focus:ring-2 focus:ring-blue-500 focus:outline-none block w-full p-3 transition-all min-w-0" />
-                        <button type="submit" className="bg-blue-600 text-white px-5 rounded-r-xl hover:bg-blue-500 active:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 active:scale-95 origin-left flex items-center justify-center">
-                            <Send className="w-4 h-4 md:hover:translate-x-1 md:hover:-translate-y-1 transition-transform" />
-                        </button>
-                    </form>
-                </div>
             </div>
 
             <div className="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 mt-12 lg:mt-16 pt-8 border-t border-gray-800 text-xs flex flex-col md:flex-row justify-between items-center text-center md:text-left font-light tracking-wide gap-4">

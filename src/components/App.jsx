@@ -36,8 +36,7 @@ import {
     HeadphonesIcon,
     Filter,
     Loader2,
-    CheckCircle2,
-    PenTool
+    CheckCircle2
 } from 'lucide-react';
 
 const CATEGORIES = [

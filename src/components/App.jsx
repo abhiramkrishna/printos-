@@ -36,7 +36,8 @@ import {
     HeadphonesIcon,
     Filter,
     Loader2,
-    CheckCircle2
+    CheckCircle2,
+    PenTool
 } from 'lucide-react';
 
 const CATEGORIES = [
@@ -64,6 +65,11 @@ const CATEGORIES = [
         id: 'packaging', title: 'Packaging', icon: Package, desc: 'Custom Boxes, Mailers & Stickers', color: 'green',
         hoverText: 'hover:text-green-600', hoverBg: 'hover:bg-green-50', text: 'text-green-600', bg: 'bg-green-100',
         subItems: ['Custom Boxes', 'Mailers', 'Stickers & Labels']
+    },
+    {
+        id: 'design', title: 'Design', icon: PenTool, desc: 'In-house design team for logo creation, brand identity, and tracing.', color: 'indigo',
+        hoverText: 'hover:text-indigo-600', hoverBg: 'hover:bg-indigo-50', text: 'text-indigo-600', bg: 'bg-indigo-100',
+        subItems: ['Logo Creation', 'Brand Identity', 'Tracing']
     },
     {
         id: 'decor', title: 'Print & Decor', icon: ImageIcon, desc: 'Acrylic cutouts & Photo Prints', color: 'cyan',

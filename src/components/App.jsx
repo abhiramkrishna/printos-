@@ -66,6 +66,18 @@ const CATEGORIES = [
         subItems: ['Custom Boxes', 'Mailers', 'Stickers & Labels']
     },
     {
+    id: 'design',
+    title: 'Design',
+    icon: PenTool,
+    desc: 'In-house design team for logo creation, brand identity, and tracing.',
+    color: 'indigo',
+    hoverText: 'hover:text-indigo-600',
+    hoverBg: 'hover:bg-indigo-50',
+    text: 'text-indigo-600',
+    bg: 'bg-indigo-100',
+    subItems: ['Logo Creation', 'Brand Identity', 'Tracing']
+}
+    {
         id: 'decor', title: 'Print & Decor', icon: ImageIcon, desc: 'Acrylic cutouts & Photo Prints', color: 'cyan',
         hoverText: 'hover:text-cyan-600', hoverBg: 'hover:bg-cyan-50', text: 'text-cyan-600', bg: 'bg-cyan-100',
         subItems: ['Acrylic Photo cutouts', 'Photo Prints', 'LED Photo Frames', 'Fridge Magnets']

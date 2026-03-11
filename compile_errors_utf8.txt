@@ -1,0 +1,2 @@
+﻿src/components/App.tsx(18,2): error TS1005: ',' expected.
+src/components/App.tsx(31,1): error TS1005: '}' expected.

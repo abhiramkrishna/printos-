@@ -399,6 +399,27 @@ export const HERO_SLIDES: string[] = [
   "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=1200",
 ];
 
+export const CAROUSEL_SLIDES = [
+  {
+    image: HERO_SLIDES[0],
+    heading: "India Jersey. Adidas Style.",
+    subheading: "Personalized Jerseys for Every Match Day",
+    cta: "Order Now",
+  },
+  {
+    image: HERO_SLIDES[1],
+    heading: "Premium Quality Prints",
+    subheading: "Transform your ideas into stunning reality with our expert printing.",
+    cta: "Explore Catalog",
+  },
+  {
+    image: HERO_SLIDES[2],
+    heading: "Business Branding",
+    subheading: "Stand out from the competition with professional business cards & more.",
+    cta: "Get Quote",
+  },
+];
+
 export const TESTIMONIALS: Testimonial[] = [
   {
     name: "Joseph S.",

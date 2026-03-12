@@ -48,6 +48,7 @@ import {
   CATEGORIES,
   MOCK_PRODUCTS,
   HERO_SLIDES,
+  CAROUSEL_SLIDES,
   TESTIMONIALS,
   GOOGLE_REVIEWS,
   STARTUP_SECTIONS,
@@ -614,52 +615,61 @@ interface HeroProps {
   ) => void;
 }
 function Hero({ navigateTo }: HeroProps) {
-  const [current, setCurrent] = useState(0);
+  const [slide, setSlide] = useState(0);
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 5000);
+    const timer = setInterval(
+      () => setSlide((s) => (s + 1) % CAROUSEL_SLIDES.length),
+      5000,
+    );
     return () => clearInterval(timer);
   }, []);
+
   return (
     <section
       id="home"
       className="w-full relative bg-gray-50 flex flex-col pt-[80px] lg:pt-[116px]"
     >
-      <div className="relative w-full h-[400px] sm:h-[450px] lg:h-[500px] overflow-hidden">
-        {HERO_SLIDES.map((slide, index) => (
-          <img
-            loading="lazy"
-            key={index}
-            src={slide}
-            alt={`Slide ${index + 1}`}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === current ? "opacity-100 z-10" : "opacity-0 z-0"}`}
-          />
-        ))}
-        <div className="absolute inset-0 bg-black/30 z-10" />
-        <div className="absolute inset-0 z-20 max-w-[1600px] mx-auto px-6 lg:px-12 flex items-center">
-          <div className="max-w-xl text-white">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight">
-              India Jersey. Adidas Style.
-            </h1>
-            <p className="text-lg sm:text-xl font-medium mb-8 text-gray-200">
-              Personalized Jerseys for Every Match Day
-            </p>
-            <button
-              onClick={() => navigateTo("catalog")}
-              className="px-8 py-3 bg-[#f58634] text-white font-medium rounded-lg hover:bg-orange-600 transition-all text-lg shadow-lg"
-            >
-              Order Now
-            </button>
+      <div className="relative w-full h-[400px] sm:h-[450px] lg:h-[500px] overflow-hidden bg-black">
+        {CAROUSEL_SLIDES.map((item, idx) => (
+          <div
+            key={idx}
+            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${idx === slide ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+          >
+            <img
+              loading={idx === 0 ? "eager" : "lazy"}
+              src={item.image}
+              alt={item.heading}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 z-20 max-w-[1600px] mx-auto px-6 lg:px-12 flex items-center">
+              <div
+                className={`max-w-xl text-white transition-all duration-1000 transform ${idx === slide ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
+              >
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight">
+                  {item.heading}
+                </h1>
+                <p className="text-lg sm:text-xl font-medium mb-8 text-gray-200">
+                  {item.subheading}
+                </p>
+                <button
+                  onClick={() => navigateTo("catalog")}
+                  className="px-8 py-3 bg-[#f58634] text-white font-medium rounded-lg hover:bg-orange-600 transition-all text-lg shadow-lg"
+                >
+                  {item.cta}
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
+        ))}
+
         <div className="absolute bottom-6 left-0 right-0 z-20 flex justify-center gap-2">
-          {HERO_SLIDES.map((_, index) => (
+          {CAROUSEL_SLIDES.map((_, idx) => (
             <button
-              key={index}
-              onClick={() => setCurrent(index)}
-              aria-label={`Go to slide ${index + 1}`}
-              className={`h-2.5 rounded-full transition-all duration-300 ${index === current ? "bg-white w-8" : "bg-white/50 hover:bg-white/80 w-2.5"}`}
+              key={idx}
+              onClick={() => setSlide(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className={`h-2.5 rounded-full transition-all duration-300 ${idx === slide ? "bg-white w-8" : "bg-white/50 hover:bg-white/80 w-2.5"}`}
             />
           ))}
         </div>
